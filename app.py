@@ -30,15 +30,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
+        
         # Check the user credentials (simulating a simple authentication)
         user_id = username  # In real life, this would be a user ID or email
         stored_user = get_user_session(user_id)
-        
+        print(stored_user)
         if stored_user and stored_user['password'] == password:
             # User successfully authenticated, create a session
             session['user_id'] = user_id
             return redirect(url_for('home'))
         else:
+            print(username)
             return 'Invalid credentials, please try again!'
     
     return '''
